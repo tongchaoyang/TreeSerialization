@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout 
+            	pattern="%d{HH:mm:ss.SSS yyyy-MM-dd} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="FileAppender" fileName="logs/app.log">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS yyyy-MM-dd} %-6p %c{1.} [%t] %m%n</Pattern>
+<!--                 <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %m%nw</Pattern> -->
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="home.tong" level="debug" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Logger name="org.springframework" level="error" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
