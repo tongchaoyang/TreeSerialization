@@ -49,6 +49,8 @@ public class Tests {
         Tree t2 = Tree.deserialize(stree);
         logger.info("Deserialized it back and validate");
         Assertions.assertEquals(t, t2, "Tree serialization failed");
+        String stree2 = t2.serialize();
+        Assertions.assertEquals(stree, stree2, "Deserialization failure: " + stree);
 
         // serialize a one-node tree
         Node root = new Node(0, 100);
